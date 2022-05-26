@@ -60,7 +60,7 @@ class Account
 
 $admin = new Account("admin", "123456", "admin@gmail.com", "admin");
 echo "test: " . $admin->getUserName() . "</br>";
-$admin->xuatThongTin();
+
 echo "---------------------- </br>";
 $user =  new Account("user", "123456", "user@gmail.com", "user");
 $user->xuatThongTin();

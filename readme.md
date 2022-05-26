@@ -29,3 +29,27 @@ Tháng 4, 6, 9, 11	30 ngày
    * in ra số nguyên tốt
    * nhập vào 2 số a và b in ra giá trị trong khoảng [a,b]
    */
+
+   class Product
+   ten, gia, moTa, danhMuc, trangThai, hanSuDung, hinhAnh
+   // constructor
+   // get/set
+   // xuatThongTin
+   
+ tạo form đăng nhập
+ username text
+ pasword password
+ kiểm tra hợp lệ
+ username không rỗng
+ password không rỗng và mật khẩu >=6 ký tự
+ nếú sai đưa ra thông báo cho người dùng
+ đúng:
+   required user.php
+   thực hiện hàm isLogin để kiểm tra đăng nhập
+   nếu đăng nhâp thành công đưa ra thông báo
+   thật bại đưa ra thông báo
+
+   /*
+   
+   
+   */
