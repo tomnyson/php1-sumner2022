@@ -78,3 +78,20 @@ $mang_thuThi = range(0, 100);
  * in ra số nguyên tố
  * có xây dựng hàm 1đ
  */
+ 1. tìm tất cả xe -> select *
+ 2. tìm xe có giá nhở hơn or bằng 200000000 where price <= 200000000
+ 3. tìm xe thuộc categorId =1 where catalogId =1
+ 4. lấy ra 20 dòng dữ liệu với price giảm dần limit 20 order by price desc
+ 5. tìm xe có tên gần đúng là mercedes title like '%mercedes%'
+### FIND
+select * from cars
+select * from cars where categoryId=1
+select * from cars  ORDER BY price  limit 11,10
+select count(*) from cars
+select * from cars where title like '%mercedes%'
+### insert 
+insert into category(name, description, image) values ('vin', 'vinfast', null)
+### update 
+update category set name='vinfadi' where id=313
+### delete
+delete from category where id=313
