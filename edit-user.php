@@ -49,9 +49,9 @@ if (
 
     <div class="card-body">
       <?php if (!empty($message)) : ?>
-      <div class="alert alert-success">
-        <?= $message; ?>
-      </div>
+        <div class="alert alert-success">
+          <?= $message; ?>
+        </div>
       <?php endif; ?>
       <?php
       if (count($error) > 0) {

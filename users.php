@@ -23,19 +23,18 @@ require 'header.php'; ?>
           <th>Action</th>
         </tr>
         <?php foreach ($users as $user) : ?>
-        <tr>
-          <td><?= $user->id; ?></td>
-          <td><?= $user->name; ?></td>
-          <td><?= $user->username; ?></td>
-          <td>
-            <?= $user->role == 1 ? 'admin' : 'user'; ?>
-          </td>
-          <td>
-            <a href="edit-user.php?id=<?= $user->id ?>" class="btn btn-info">Edit</a>
-            <a onclick="return confirm('Are you sure you want to delete this entry?')"
-              href="delete-user.php?id=<?= $user->id ?>" class='btn btn-danger'>Delete</a>
-          </td>
-        </tr>
+          <tr>
+            <td><?= $user->id; ?></td>
+            <td><?= $user->name; ?></td>
+            <td><?= $user->username; ?></td>
+            <td>
+              <?= $user->role == 1 ? 'admin' : 'user'; ?>
+            </td>
+            <td>
+              <a href="edit-user.php?id=<?= $user->id ?>" class="btn btn-info">Edit</a>
+              <a onclick="return confirm('Are you sure you want to delete this entry?')" href="delete-user.php?id=<?= $user->id ?>" class='btn btn-danger'>Delete</a>
+            </td>
+          </tr>
         <?php endforeach; ?>
       </table>
     </div>
