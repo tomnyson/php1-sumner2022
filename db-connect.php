@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 define('DB_HOST', '192.168.64.2'); #your host -> localhost
 define('DB_USERNAME', 'dev'); // your username root
 define('DB_PASSWORD', 'dev'); // your password ''
