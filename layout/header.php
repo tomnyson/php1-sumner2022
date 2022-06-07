@@ -13,7 +13,7 @@
         <a class="nav-link" href="add-category.php">category</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">product</a>
+        <a class="nav-link" href="add-product.php">product</a>
       </li>
     </ul>
   </div>

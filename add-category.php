@@ -18,6 +18,7 @@ require('db-connect.php');
     <?php include('layout/header.php') ?>
     <h2 class="mt-5">Thêm Danh Mục</h2>
     <?php
+    // lay session ra
     if (isset($_SESSION['message'])) {
       echo '<div class="alert alert-success">' . $_SESSION['message'] . '</div>';
       unset($_SESSION['message']);
