@@ -6,11 +6,8 @@ require('db-connect.php');
 
 <head>
   <title>thêm Danh Mục</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -85,17 +82,15 @@ require('db-connect.php');
       </thead>
       <tbody>
         <?php foreach ($categories as $category) { ?>
-        <tr>
-          <td><?= $category->id ?></td>
-          <td><?= $category->name ?></td>
-          <td><?= $category->description ?></td>
-          <td>
-            <a onclick="confirm('bạn có muốn xoá không?')" href="delete-category.php?id=<?= $category->id ?>"><i
-                class="fa-solid fa-minus"></i></a>
-            <a style="margin-left: 20px" href="edit-category.php?id=<?= $category->id ?>"><i
-                class="fa-solid fa-pen-to-square"></i></a>
-          </td>
-        </tr>
+          <tr>
+            <td><?= $category->id ?></td>
+            <td><?= $category->name ?></td>
+            <td><?= $category->description ?></td>
+            <td>
+              <a onclick="confirm('bạn có muốn xoá không?')" href="delete-category.php?id=<?= $category->id ?>"><i class="fa-solid fa-minus"></i></a>
+              <a style="margin-left: 20px" href="edit-category.php?id=<?= $category->id ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+            </td>
+          </tr>
         <?php } ?>
       </tbody>
     </table>

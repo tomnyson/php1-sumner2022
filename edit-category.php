@@ -7,8 +7,7 @@ require('db-connect.php');
 
 <head>
   <title>Cập nhật danh mục</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body>
@@ -62,14 +61,12 @@ require('db-connect.php');
         <form action="edit-category.php?id=<?= $_GET['id'] ?>" method="post" id="frmProductCreate">
           <div class="mb-3">
             <input type="hidden" name="id" value="<?= isset($category->id) ? $category->id : '' ?>" />
-            <input type="text" class="form-control" value="<?= isset($category->name) ? $category->name : '' ?>"
-              name="name" id="name">
+            <input type="text" class="form-control" value="<?= isset($category->name) ? $category->name : '' ?>" name="name" id="name">
             <p class="help-block text-danger"><?= isset($errors['name']) ? $errors['name'] : '' ?></p>
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Mô tả</label>
-            <textarea class="form-control" name="description" value="" class="form-control"
-              id="price"><?= isset($category->description) ? $category->description : '' ?></textarea>
+            <textarea class="form-control" name="description" value="" class="form-control" id="price"><?= isset($category->description) ? $category->description : '' ?></textarea>
             <p class="help-block text-danger"><?= isset($errors['description']) ? $errors['description'] : '' ?></p>
           </div>
           <button type="submit" name="action" class="btn btn-primary btn-submit" value="update">Cập Nhật</button>
