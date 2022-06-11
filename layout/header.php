@@ -17,4 +17,11 @@
       </li>
     </ul>
   </div>
+  <?php
+    if(isset($_SESSION['user'])){
+      echo "<span style='margin-right: 20px;'>xin chào: ".$_SESSION['user']->username."</span>";
+      echo '<a href="logout.php" class="btn btn-primary">Logout</a>';
+    }
+  ?>
+      
 </nav>

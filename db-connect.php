@@ -3,9 +3,9 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-define('DB_HOST', '192.168.64.2'); #your host -> localhost
-define('DB_USERNAME', 'dev'); // your username root
-define('DB_PASSWORD', 'dev'); // your password ''
+define('DB_HOST', 'localhost'); #your host -> localhost
+define('DB_USERNAME', 'root'); // your username root
+define('DB_PASSWORD', ''); // your password ''
 define('DB_NAME', 'teachphp1');  // db của các bạn
 $conn = null;
 try {

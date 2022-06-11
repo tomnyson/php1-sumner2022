@@ -16,6 +16,7 @@ require('db-connect.php');
     <h2 class="mt-5">Thêm Danh Mục</h2>
     <?php
     // lay session ra
+    var_dump($_SESSION['user']->id);
     if (isset($_SESSION['message'])) {
       echo '<div class="alert alert-success">' . $_SESSION['message'] . '</div>';
       unset($_SESSION['message']);
