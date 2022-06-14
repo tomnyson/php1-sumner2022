@@ -1,5 +1,4 @@
 <?php
-session_start();
 require('db-connect.php');
 $sql = "select * from category";
 $stm = $conn->prepare($sql);
@@ -16,7 +15,11 @@ $categories = $stm->fetchAll(PDO::FETCH_OBJ);
 
 <body>
   <div class="container">
-    <?php include('./layout/header.php') ?>
+    <?php include('./layout/header.php');
+       include('permission-admin.php');
+       ?>
+    ?>
+    
     <h2>thêm sản phẩm</h2>
     <?php
     $errors = array();

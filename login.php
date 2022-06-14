@@ -1,9 +1,8 @@
 <?php
-session_start();
+include('mailService.php');
 require('db-connect.php');
 ?>
 <html>
-
 <head>
   <title>Đăng nhập</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -12,31 +11,45 @@ require('db-connect.php');
 <body>
     <?php
     $errors = array();
-    if(!empty($_POST['username'])&& !empty($_POST['password'])) {
+    if(isset($_POST['action'])&& isset($_POST['username'])&& isset($_POST['password'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
+      if(empty($_POST['username'])) {
+          $errors['username'] = 'Username không được để trống';
+      }
+      if(empty($_POST['password'])) {
+          $errors['password'] = 'password không được để trống';
+      }
+
+      if(count($errors) == 0) {
         //có thể đếm được
-        $sql = "select * from users where username = :username and password = :password";
+        $sql = "select * from users where username = :username";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
             ':username' => $username,
-            ':password' => $password
         ]);
         $user = $stmt->fetch(PDO::FETCH_OBJ);
+        var_dump($user);
         if($user) {
-            $_SESSION['user'] = $user;
-            header('Location: add-category.php');
-        } else {
+          try{
+            if(password_verify($password, $user->password)) {
+              $_SESSION['user'] = $user;
+              if(isset($_SESSION['redirect'])) {
+                header('Location: '.$_SESSION['redirect']);
+              }
+              
+              header('Location: product.php');
+          } else {
+            $errors['password'] = 'Mật khẩu không đúng';
+          }
+          }catch(Exception $e) {
+            echo $e->getMessage();
+          }
+         
+        }   else {
             $errors['login'] = 'Đăng nhập thất bại';
         }
-        
-    } else {
-        if(empty($_POST['username'])) {
-            $errors['username'] = 'Username không được để trống';
-        }
-        if(empty($_POST['password'])) {
-            $errors['password'] = 'password không được để trống';
-        }
+      }
     }
     ?>
 <div class="card mt-5" style="width: 500px;">
@@ -47,17 +60,17 @@ require('db-connect.php');
             echo "<div class='text-danger'>$error</div>";
           }
         } ?>
-        <form action="login.php"  method="POST">
+        <form action="login.php"  method="POST" autocomplete="off"  >
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">username</label>
-            <input type="text" class="form-control" name="username" id="exampleInputEmail1"
-              aria-describedby="emailHelp">
+            <input type="text" class="form-control"  name="username" id="exampleInputEmail1"
+              aria-describedby="emailHelp" autocomplete="off">
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+            <input type="password" name="password" class="form-control"  id="exampleInputPassword1" autocomplete="off">
           </div>
-          <button type="submit" class="btn btn-primary">Login</button>
+          <button type="submit" name="action" value="login" class="btn btn-primary">Login</button>
         </form>
         <a href="register.php">tạo tài khoản mới</a>
       </div>

@@ -4,18 +4,18 @@ require('db-connect.php');
 <html>
 
 <head>
-  <title>thêm Danh Mục</title>
+  <title>thêm User</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
   <div class="container">
-    <?php 
-        include('layout/header.php');
-        include('permission-admin.php');
+    <?php
+    include('layout/header.php');
+    include('permission-admin.php');
     ?>
-    <h2 class="mt-5">Thêm Danh Mục</h2>
+    <h2 class="mt-5">Thêm Người dùng</h2>
     <?php
     // lay session ra
     if (isset($_SESSION['message'])) {
@@ -48,27 +48,32 @@ require('db-connect.php');
     }
 
     ?>
-    <form action="add-category.php" method="post" id="frmProductCreate">
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">tên</label>
-        <input type="text" class="form-control" name="name" id="name">
-        <?php if (isset($errors['name'])) {
-          echo '<p class="text-danger">' . $errors['name'] . '</p>';
-        } ?>
+    <form action="add-user.php" method="post" id="frmProductCreate">
+      <div class="mb-5">
+        <label for="exampleInputEmail1" class="form-label">username</label>
+        <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
       </div>
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Mô tả</label>
-        <textarea class="form-control" name="description" class="form-control" id="price"></textarea>
-        <?php if (isset($errors['description'])) {
-          echo '<p class="text-danger">' . $errors['description'] . '</p>';
-        } ?>
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">email</label>
+        <input type="text" name="email" class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">role</label>
+        <select class="form-control" >
+          <option class="form-control" value="1">admin</option>
+          <option class="form-control" value="2">user</option>
+        </select>
       </div>
       <button type="submit" name="add" class="btn btn-primary btn-submit" value="add">Thêm Mới</button>
       <div>
       </div>
     </form>
     <?php
-    $sql_category = "select * from category";
+    $sql_category = "select * from users";
     $stmt_category = $conn->prepare($sql_category);
     $stmt_category->execute();
     $categories = $stmt_category->fetchAll(PDO::FETCH_OBJ);
@@ -77,8 +82,10 @@ require('db-connect.php');
       <thead>
         <tr>
           <th scope="col">id</th>
-          <th scope="col">Tên</th>
-          <th scope="col">Mô tả</th>
+          <th scope="col">username</th>
+          <th scope="col">password</th>
+          <th scope="col">email</th>
+          <th scope="col">role</th>
           <th scope="col">action</th>
         </tr>
       </thead>
@@ -86,8 +93,10 @@ require('db-connect.php');
         <?php foreach ($categories as $category) { ?>
           <tr>
             <td><?= $category->id ?></td>
-            <td><?= $category->name ?></td>
-            <td><?= $category->description ?></td>
+            <td><?= $category->username ?></td>
+            <td>*******</td>
+            <td><?= $category->email ?></td>
+            <td><?= $category->role ?></td>
             <td>
               <a onclick="confirm('bạn có muốn xoá không?')" href="delete-category.php?id=<?= $category->id ?>"><i class="fa-solid fa-minus"></i></a>
               <a style="margin-left: 20px" href="edit-category.php?id=<?= $category->id ?>"><i class="fa-solid fa-pen-to-square"></i></a>
