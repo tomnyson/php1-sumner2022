@@ -29,7 +29,6 @@ require('db-connect.php');
             ':username' => $username,
         ]);
         $user = $stmt->fetch(PDO::FETCH_OBJ);
-        var_dump($user);
         if($user) {
           try{
             if(password_verify($password, $user->password)) {
