@@ -9,17 +9,17 @@ $categories = $stm->fetchAll(PDO::FETCH_OBJ);
 
 <head>
   <title>thêm sản phẩm</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 </head>
 
 <body>
   <div class="container">
     <?php include('./layout/header.php');
-       include('permission-admin.php');
-       ?>
+    include('permission-admin.php');
     ?>
-    
+    ?>
+
     <h2>thêm sản phẩm</h2>
     <?php
     $errors = array();
@@ -105,7 +105,7 @@ $categories = $stm->fetchAll(PDO::FETCH_OBJ);
             <label for="exampleInputPassword1" class="form-label">giá</label>
             <input type="number" class="form-control" name="price">
           </div>
-          <button type="submit" name="action" class="btn btn-primary btn-submit" value="add">Thêm sản phẩm</button>
+        
         </div>
         <div class="col col-md-6">
           <div class="mb-3">
@@ -124,18 +124,24 @@ $categories = $stm->fetchAll(PDO::FETCH_OBJ);
               } ?>
             </select>
           </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">description</label>
-            <textarea class="form-control" name="description" type="text" class="form-control"
-              id="description"></textarea>
-          </div>
+
           <div>
           </div>
         </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">description</label>
+          <textarea class="form-control" name="description" type="text" class="form-control" id="description"></textarea>
+        </div>
       </div>
+      <button type="submit" name="action" class="btn btn-primary btn-submit" value="add">Thêm sản phẩm</button>
     </form>
 
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/javascript" src="./asset//ckeditor/ckeditor.js"></script>
+  <script>
+    CKEDITOR.replace('description');
+  </script>
 </body>
 
 </html>

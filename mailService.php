@@ -6,8 +6,8 @@ use PHPMailer\PHPMailer\Exception;
 require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
-define('USERNAME', 'tabletkindfire@gmail.com');
-define('PASSWORD', 'lkbivmsskcnzpgmb');
+define('USERNAME', 'tabletkindfire@gmail.com'); // thay bằng email của các bạn
+define('PASSWORD', 'lkbivmsskcnzpgmb'); // thay bằng password của các bạn
 class MailService
 {
     public static function send($to='tabletkindfire@gmail.com', $from='tabletkindfire@gmail.com',$sublect='notfication', $content='')
